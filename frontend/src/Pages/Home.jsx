@@ -82,7 +82,7 @@ const HomePage = () => {
   const isChosenDay = (taskDate, chosenDate) =>
     new Date(taskDate).toDateString() === chosenDate.toDateString();
 
-  const filterTasksForChosenDate = (tasks, date) => {
+  const filterTasksForChosenDate = (tasks = [], date) => {
     const todayTasks = tasks.filter((task) => isChosenDay(task.date, date));
     setChosenDateTasks(todayTasks);
     dispatch(setChosenDayTasks(todayTasks));
