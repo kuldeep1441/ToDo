@@ -17,7 +17,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://to-do-app-seven-delta-70.vercel.app", // Allow this origin
+    origin: '*', // Allow this origin
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Allowed HTTP methods
     credentials: true, // Allow credentials (cookies, authorization headers)
   })
@@ -30,3 +30,7 @@ app.use(express.json());
 app.use("/tasks", taskRoutes);
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+
+
+// "https://to-do-app-seven-delta-70.vercel.app";
