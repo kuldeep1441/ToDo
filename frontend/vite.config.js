@@ -13,10 +13,11 @@
         // https://vitejs.dev/config/
     
         export default defineConfig({
-        server: {                                     // by making server and proxy there is no need to apply local host every time and it also resolve problem of cors
+          server: {
+            // by making server and proxy there is no need to apply local host every time and it also resolve problem of cors
             proxy: {
-                    '/api' : "http://localhost:5000"         
-                }
+              "/api": "to-ef4ewaoor-kuldeeps-projects-3c7ed0c8.vercel.app",
             },
-            plugins: [react()],
-        })
+          },
+          plugins: [react()],
+        });
