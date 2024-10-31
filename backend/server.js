@@ -9,7 +9,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["https://to-do-app-seven-delta-70.vercel.app/"],
+    origin: ["https://to-do-app-seven-delta-70.vercel.app"],
     methods: ["POST", "GET", "PUT", "PATCH", "DELETE"],
     credentials: true,
   })
