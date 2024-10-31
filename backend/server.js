@@ -7,13 +7,22 @@ dotenv.config();
 connectDB();
 const app = express();
 
+// app.use(
+//   cors({
+//     origin: ["https://to-do-app-seven-delta-70.vercel.app/"],
+//     methods: ["POST", "GET", "PUT", "PATCH", "DELETE"],
+//     credentials: true,
+//   })
+// );
+
 app.use(
   cors({
-    origin: ["https://to-do-app-seven-delta-70.vercel.app/"],
-    methods: ["POST", "GET", "PUT", "PATCH", "DELETE"],
-    credentials: true,
+    origin: "https://to-do-app-seven-delta-70.vercel.app", // Allow this origin
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Allowed HTTP methods
+    credentials: true, // Allow credentials (cookies, authorization headers)
   })
 );
+
 
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
