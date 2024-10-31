@@ -6,7 +6,17 @@ const taskRoutes = require("./routes/taskRoutes");
 dotenv.config();
 connectDB();
 const app = express();
-app.use(cors());
+
+app.use(
+  cors({
+    origin: [""],
+    methods: ["POST", "GET","PUT", "PATCH", "DELETE"],
+    credentials: true,
+  })
+);
+
+app.use(bodyParser.json({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/api/tasks", taskRoutes);
 const PORT = process.env.PORT || 5000;
