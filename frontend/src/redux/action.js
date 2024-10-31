@@ -15,11 +15,15 @@ import {
   SET_FILTERED_TASKS,
 } from "./constants";
 
+
+
 // Action to fetch tasks
 export const fetchTasks = () => async (dispatch) => {
   dispatch({ type: FETCH_TASKS_REQUEST });
   try {
-    const response = await axios.get("/api/tasks");
+    const response = await axios.get(
+      "https://to-do-five-lime.vercel.app/tasks"
+    );
     const tasks = response.data;
     localStorage.setItem("allTasks", JSON.stringify(tasks));
     dispatch({ type: FETCH_TASKS_SUCCESS, payload: tasks });
@@ -31,7 +35,10 @@ export const fetchTasks = () => async (dispatch) => {
 // Action to add a task
 export const addTask = (task) => async (dispatch) => {
   try {
-    const response = await axios.post("/api/tasks", task);
+    const response = await axios.post(
+      "https://to-do-five-lime.vercel.app/tasks",
+      task
+    );
     const newTask = response.data;
     const currentTasks = JSON.parse(localStorage.getItem("allTasks")) || [];
     const updatedTasks = [...currentTasks, newTask];
@@ -45,7 +52,10 @@ export const addTask = (task) => async (dispatch) => {
 // Action to update a task
 export const updateTask = (id, task) => async (dispatch) => {
   try {
-    const response = await axios.put(`/api/tasks/${id}`, task);
+    const response = await axios.put(
+      `https://to-do-five-lime.vercel.app/tasks/${id}`,
+      task
+    );
     const updatedTask = response.data;
     const currentTasks = JSON.parse(localStorage.getItem("allTasks")) || [];
     const updatedTasks = currentTasks.map((t) => (t.id === id ? updatedTask : t));
@@ -72,7 +82,7 @@ export const updateTask = (id, task) => async (dispatch) => {
 // Action to delete a task
 export const deleteTask = (id) => async (dispatch) => {
   try {
-    await axios.delete(`/api/tasks/${id}`);
+    await axios.delete(`https://to-do-five-lime.vercel.app/tasks/${id}`);
     
     // Update tasks in local storage
     const currentTasks = JSON.parse(localStorage.getItem("allTasks")) || [];
@@ -98,7 +108,10 @@ export const deleteTask = (id) => async (dispatch) => {
 // Action to update task status
 export const updateTaskStatus = (id, status) => async (dispatch) => {
   try {
-    const response = await axios.patch(`/api/tasks/${id}`, { status });
+    const response = await axios.patch(
+      `https://to-do-five-lime.vercel.app/tasks/${id}`,
+      { status }
+    );
     const updatedTask = response.data;
     
     // Update tasks in local storage

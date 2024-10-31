@@ -9,7 +9,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["to-do-nlfp9v6xv-kuldeeps-projects-3c7ed0c8.vercel.app"],
+    origin: ["https://to-do-app-seven-delta-70.vercel.app/"],
     methods: ["POST", "GET", "PUT", "PATCH", "DELETE"],
     credentials: true,
   })
@@ -18,6 +18,6 @@ app.use(
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
-app.use("/api/tasks", taskRoutes);
+app.use("/tasks", taskRoutes);
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
