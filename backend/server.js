@@ -9,8 +9,8 @@ const app = express();
 
 app.use(
   cors({
-    origin: [""],
-    methods: ["POST", "GET","PUT", "PATCH", "DELETE"],
+    origin: ["to-do-nlfp9v6xv-kuldeeps-projects-3c7ed0c8.vercel.app"],
+    methods: ["POST", "GET", "PUT", "PATCH", "DELETE"],
     credentials: true,
   })
 );
