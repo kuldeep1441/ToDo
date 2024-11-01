@@ -14,36 +14,30 @@ import SearchBar from "./Components/SearchBar";
 import Onboarding from "./Pages/Onboarding";
 
 function App() {
-  const [showOnboarding, setShowOnboarding] = useState(false);
+  // const [showOnboarding, setShowOnboarding] = useState(false);
 
-  useEffect(() => {
-    // Check if onboarding has been shown in this session
-    const sessionVisited = sessionStorage.getItem("sessionVisited");
+  // useEffect(() => {
+  //   // Check if onboarding has been shown in this session
+  //   const sessionVisited = sessionStorage.getItem("sessionVisited");
 
-    if (!sessionVisited) {
-      // If not, show the onboarding page
-      setShowOnboarding(true);
-      sessionStorage.setItem("sessionVisited", "true");
-    }
-  }, []);
+  //   if (!sessionVisited) {
+  //     // If not, show the onboarding page
+  //     setShowOnboarding(true);
+  //     sessionStorage.setItem("sessionVisited", "true");
+  //   }
+  // }, []);
 
-  const handleOnboardingComplete = () => {
-    setShowOnboarding(false);
-  };
+  // const handleOnboardingComplete = () => {
+  //   setShowOnboarding(false);
+  // };
 
   return (
     <Router>
       <Routes>
-        {showOnboarding ? (
-          // Show onboarding page and mark it complete after viewing
           <Route
             path="/"
-            element={<Onboarding onComplete={handleOnboardingComplete} />}
+            element={<Onboarding />}
           />
-        ) : (
-          // Redirect "/" to home after onboarding is viewed in the session
-          <Route path="/" element={<Navigate to="/home" />} />
-        )}
         <Route path="/home" element={<Home />} />
         <Route path="/task/:id" element={<TaskDetail />} />
         {/* Uncomment below if you need the SearchBar page */}
