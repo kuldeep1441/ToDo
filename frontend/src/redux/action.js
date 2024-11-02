@@ -170,7 +170,9 @@ import {
 export const fetchTasks = () => async (dispatch) => {
   dispatch({ type: FETCH_TASKS_REQUEST });
   try {
-    const response = await axios.get("/api/tasks");
+    const response = await axios.get(
+      "https://to-do-server-sigma.vercel.app/tasks"
+    );
     const tasks = response.data;
     localStorage.setItem("allTasks", JSON.stringify(tasks));
     dispatch({ type: FETCH_TASKS_SUCCESS, payload: tasks });
@@ -183,7 +185,7 @@ export const fetchTasks = () => async (dispatch) => {
 export const addTask = (task) => async (dispatch) => {
   try {
     const response = await axios.post(
-      "https://to-do-server-topaz.vercel.app/tasks",
+      "https://to-do-server-sigma.vercel.app/tasks",
       task
     );
     const newTask = response.data;
@@ -200,7 +202,7 @@ export const addTask = (task) => async (dispatch) => {
 export const updateTask = (id, task) => async (dispatch) => {
   try {
     const response = await axios.put(
-      `https://to-do-server-topaz.vercel.app/tasks/${id}`,
+      `https://to-do-server-sigma.vercel.app/tasks/${id}`,
       task
     );
     const updatedTask = response.data;
@@ -229,7 +231,7 @@ export const updateTask = (id, task) => async (dispatch) => {
 // Action to delete a task
 export const deleteTask = (id) => async (dispatch) => {
   try {
-    await axios.delete(`https://to-do-server-topaz.vercel.app/tasks/${id}`);
+    await axios.delete(`https://to-do-server-sigma.vercel.app/tasks/${id}`);
     
     // Update tasks in local storage
     const currentTasks = JSON.parse(localStorage.getItem("allTasks")) || [];
@@ -256,7 +258,7 @@ export const deleteTask = (id) => async (dispatch) => {
 export const updateTaskStatus = (id, status) => async (dispatch) => {
   try {
     const response = await axios.patch(
-      `https://to-do-server-topaz.vercel.app/tasks/${id}`,
+      `https://to-do-server-sigma.vercel.app/tasks/${id}`,
       { status }
     );
     const updatedTask = response.data;
