@@ -47,11 +47,12 @@ const HomePage = () => {
 
   const categorizeTasksByWeek = (tasks) => {
     const taskWeeks = [];
-    const currentWeekEnd = endOfWeek(currentWeek);
+    const currentWeekEnd = endOfWeek(currentWeek, { weekStartsOn: 1 }); // Ensure this includes Sunday
     const weekLabel = `${format(currentWeek, "d MMM")} - ${format(
       currentWeekEnd,
       "d MMM"
     )}`;
+
     const tasksForWeek = tasks.filter((task) =>
       isWithinInterval(new Date(task.date), {
         start: currentWeek,
